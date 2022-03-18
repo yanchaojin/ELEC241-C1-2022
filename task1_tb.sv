@@ -12,7 +12,48 @@ task1b u2 (y_other, a, b, c);
 
 initial
 begin
-	//Write your testbench here
+
+a = 0; b=0; c=0;
+#50; 
+assert (y_structural == 2'b00) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other ==  2'b00) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 0; b=0; c=1;
+#50
+assert (y_structural == 2'b01) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b01)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 0; b=1; c=0;
+#50
+assert (y_structural == 2'b01)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b01) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 0; b=1; c=1;
+#50
+assert (y_structural == 2'b10) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b10)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 1; b=0; c=0;
+#50
+assert (y_structural == 2'b01)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b01) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 1; b=0; c=1;
+#50
+assert (y_structural == 2'b10)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b10)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 1; b=1; c=0;
+#50
+assert (y_structural == 2'b10) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b10) $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+
+a = 1; b=1; c=1;
+#50
+assert (y_structural == 2'b11)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+assert (y_other == 2'b11)  $display( "passed %d %d %d",a,b,c); else $error("failed %d %d %d",a,b,c);
+#50;
+
 
 end
 
