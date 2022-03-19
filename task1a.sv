@@ -17,6 +17,8 @@ module task1a(output logic [1:0] Y, input logic A, B, C);
 
 
 //internal node
+// function Y[0] = A'B'C + A'BC' + AB'C' + ABC 
+// function Y[0] = A'BC  + AB'C  + ABC'  + ABC 
 wire a1;
 wire a2;
 wire a3;
@@ -29,20 +31,20 @@ wire b4;
 wire notA;
 wire notB;
 wire notC;
-not a_no (notA, A);
-not b_no (notB, B);
-not c_no (notC, C);
-and y0and1 (a1 ,notA,notB ,C   );
-and y0and2 (a2 ,notA,B,    notC );
-and y0and3 (a3 ,A,   notB, notC);
-and y0and4 (a4 ,A,   B,    C);
+not a_no (notA, A);//A'
+not b_no (notB, B);//B'
+not c_no (notC, C);//C'
+and y0and1 (a1 ,notA,notB ,C   );//  a1=  A'B'C
+and y0and2 (a2 ,notA,B,    notC );// a2 = A'BC'
+and y0and3 (a3 ,A,   notB, notC);//  a3 = AB'C'
+and y0and4 (a4 ,A,   B,    C);//       Y0 = a1+ a2 + a3 + a4
 or  Y0   (Y[0],a1,a2,a3,a4);
 
-and y1and1 (b1 ,notA,B ,   C   );
-and y1and2 (b2 ,A,   notB, C   );
-and y1and3 (b3 ,A,   B,    notC);
-and y1and4 (b4 ,A,   B,    C);
-or  Y1   (Y[1],b1,b2,b3,b4);
+and y1and1 (b1 ,notA,B ,   C   );//    b1 = A'BC
+and y1and2 (b2 ,A,   notB, C   );//    b2 = AB'C  
+and y1and3 (b3 ,A,   B,    notC);//    b3 = ABC'
+and y1and4 (b4 ,A,   B,    C);//       b4 = ABC 
+or  Y1   (Y[1],b1,b2,b3,b4);//         Y1 = b1+ b2 + b3 + b4
 
 
 endmodule
