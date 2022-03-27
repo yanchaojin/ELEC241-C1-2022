@@ -1,6 +1,5 @@
 // Task 3 - 2022
-module task3;
-
+module task3 (output logic [2:0] Q,output logic VALID, input logic CLK, DATAIN,START);
 logic [3:0] count;
 logic [7:0] store;
    always_ff @(posedge CLK) begin
